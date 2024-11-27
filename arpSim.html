@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Portfolio</title><!--<p>OTP</p>-->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="projectsMediaQueries.css">
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo"><a href="index.html" style="text-decoration: none;">Taufiq Saha Hamza</a></div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+         <!-- <li><a href="#experience">Experience</a></li>-->
+          <li><a href="projects.html">Projects</a></li>
+          <!--<li><a href="#contact">Contact</a></li>-->
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo"><a href="index.html" style="text-decoration: none;">Taufiq Saha Hamza</a></div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <!--<li><a href="#experience" onclick="toggleMenu()">Experience</a></li>-->
+          <li><a href="projects.html" onclick="toggleMenu()">Projects</a></li>
+          <!--<li><a href="#contact" onclick="toggleMenu()">Contact</a></li>-->
+        </div>
+      </div>
+    </nav>
+    
+    <section id="about">
+      <p class="section__text__p1">Documentation</p>
+      <h1 class="title">ARP Spoofing/poisoning Simulation Documentation</h1>
+      <img src="arpImg.jpg" class="about-pic" style="height: 200px; justify-content: center; align-items: center; position: relative;left: 500px;">
+      <p class="section__text__p1"> <span style="color: red;">****</span>Deskptop Required. Mobile MediaQueries Errors <span style="color: red;">****</span></p>
+      <br><br><br>
+      <h1 class="title">Brief Overview</h1>
+      <div class="section-container">
+        <div class="section__pic-container">
+          <img
+            src="arp1.png"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+      </div>
+      
+      <div class="section-container" style="margin-top: 100px;">
+        <div class="about-details-container">
+          <div class="text-container">
+            <p><h3>Multiple Tabs in Kali Terminal </h3><br>
+              Top Left Tab <br><br><h3> `netdiscover`-I eth1 </h3><br>
+              Purpose: Used to scan the local network and identify live hosts and their associated MAC addresses.
+              Details:<br><br><h3>
+              - The command identifies three IPs:
+                - 192.168.1.1 (Gateway)
+                - 192.168.1.100 (Ubuntu server)
+                - 192.168.1.103 (Windows machine).</h3><br>
+              - This establishes the targets for the ARP spoofing attack. <br><br>
+              Top Right Tab - Wireshark <br>
+              <h3>Purpose: </h3>  Used to monitor and capture network traffic. <br>
+              <h3> Details:</h3>
+              - ARP packets and HTTP POST requests are being filtered and analyzed. <br>
+              - The attacker observes the communication between the Windows machine and the Ubuntu server.
+              Bottom Left Tab - `arpspoof` Commands <br><br>
+              <h3>Command 1: `sudo arpspoof -i eth1 -t 192.168.1.103 192.168.1.1`</h3><br><br>
+              - This spoofs the ARP cache of the Windows machine (192.168.1.103), making it think the Kali machine is the gateway (192.168.1.1).
+              <h3>Command 2: `sudo arpspoof -i eth1 -t 192.168.1.1 192.168.1.103`</h3><br>
+              - This spoofs the ARP cache of the gateway, making it think the Kali machine is the Windows machine.
+              Outcome: The Kali machine becomes a proxy for all traffic between the Windows machine and the gateway, facilitating the MITM attack.
+              Bottom Right Tab - `nmap` Scan <br>
+              <h3>Purpose: </h3><br>Scans the subnet (192.168.1.0/24) to identify open ports and services running on the target devices. <br>
+              <h3>Details:</h3>
+              - Confirms that the Ubuntu server (192.168.1.100) is hosting an HTTP service on port 80. <br>
+              - Provides reconnaissance information about potential vulnerabilities in the network.
+              </p>
+          </div>
+        </div>
+      </div>
+      <div class="section-container" style="justify-content: center; align-items: center; margin-top: 100px;">
+        <div class="section__pic-container">
+          <img
+            src="arp2.png"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+      </div>
+      
+      <div class="section-container" style="margin-top: -180px;">
+        <div class="about-details-container">
+          <div class="text-container">
+            <p><h3>Description:</h3> A login attempt on the banking application hosted on 192.168.1.100 <br>
+              <h3>Details:</h3><br>
+              - The user enters their credentials <h3>(Username: `admin`, Password: `admin123`)</h3> into the web form. <br>
+              - The form uses an unencrypted HTTP POST method to transmit the credentials to the server.
+              
+          </div>
+        </div>
+      </div>
+      <div class="section-container" style="margin-top: -180px;">
+        <div class="section__pic-container">
+          <img
+            src="arp3.png"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+      </div>
+      
+      <div class="section-container" style="margin-top: 450px;">
+        <div class="about-details-container">
+          <div class="text-container">
+            <p><h3>Description:</h3> Captured HTTP POST request. <br>
+              <h3>Details:</h3><br>
+              - The HTTP POST request is clearly visible in Wireshark. <br>
+              - The attacker filters traffic using the following display filter: <br>
+              
+                <br><h3>ip.addr == 192.168.1.100 && ip.addr == 192.168.1.103 && tcp.port == 80 && http.request.method == "POST"</h3><br><br>
+              
+              - Credentials are visible in plaintext under the <h3>"Form item"</h3> section of the captured packet: <br>
+                <h3>- Username: `admin` <br>
+                - Password: `admin123`</h3><br>
+              - This demonstrates the vulnerability of transmitting sensitive data over an unencrypted HTTP connection. <br><br>
+              
+              <h1>Countermeasures and Best Practices</h1><br><br>
+              <h3>To protect against ARP spoofing, MITM attacks, and related vulnerabilities, consider implementing the following measures:</h3><br><br>
+              <h3>1. Network-Level Protections</h3><br>
+              - Use ARP Spoofing Detection Tools: <br>
+                - Tools like *ARPWatch* or *XArp* can monitor and alert against suspicious ARP activity. <br>
+              - Static ARP Tables: <br>
+                - Configure static ARP entries for critical devices (e.g., gateway and servers). <br>
+              - Network Segmentation: <br>
+                - Use VLANs to isolate sensitive devices and limit ARP broadcast domains. <br><br>
+              <h3>2. Secure Protocols </h3><br>
+              - Use HTTPS: <br>
+                - Encrypt web traffic using TLS certificates, ensuring credentials are not transmitted in plaintext <br>
+              - Enable SSH or VPN: <br>
+                - Avoid unencrypted services like HTTP or Telnet for remote access. <br><br>
+              <h3>3. Secure Authentication</h3><br>
+              - Strong Password Policies: <br>
+                - Enforce complex passwords and multi-factor authentication (MFA). <br>
+              - Session Management: <br> 
+                - Implement secure session handling with timeouts and invalidation upon logout. <br>
+             <h3> 4. Monitoring and Auditing </h3><br>
+              - Intrusion Detection Systems (IDS): <br>
+                - Use tools like *Snort* or *Suricata* to detect unusual ARP traffic and MITM activities. <br>
+              - Audit Network Logs: <br>
+                - Regularly review network logs for anomalies or unexpected connections. <br>
+              <h3>5. Use of Switches with Port Security</h3><br>
+              - Configure port security on switches to limit the number of MAC addresses allowed per port, preventing ARP spoofing attempts. <br>
+              <h3>6. Educate Users</h3><br>
+              Train employees on the importance of secure browsing habits and identifying insecure websites (e.g., missing HTTPS).
+              </p>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="section-container" style="margin-top: 350px;">
+        <div class="about-details-container">
+          <div class="text-container">
+            <p>
+              <span style="color: red;">****</span>This demonstration is strictly for educational purposes, emphasizing ethical hacking practices. This project serves to showcase proficiency with cybersecurity tools, scripting languages, and general knowledge of cybersecurity techniques.<span style="color: red;">****</span>
+
+              <br><br>
+
+              <span style="color: red;">****</span>Click Below to access the full and complete documentation. This project is subject to revisions, additions and imporvements to make the project as complex and realstic as per real life experiences<span style="color: red;">****</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" style="margin-top: -260px;">
+      <p class="section__text__p1">Documentation PDF</p>
+      <h1 class="title">Read Detailed Documentation</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="download.png"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="ARP_Spoofing_Documentation.pdf" style="text-decoration: none;">ARP Spoofing/Poisoning Simulation Documentation</a></p>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <!--<li><a href="#experience">Experience</a></li>-->
+            <li><a href="projects.html">Projects</a></li>
+            <!--<li><a href="#contact">Contact</a></li>-->
+          </ul>
+        </div>
+      </nav>
+      <p>&#169; 2024 Bytepath Technologies.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
